@@ -32,23 +32,24 @@ result_label.pack()
 def hesapla():
     try:
         kilo = float(my_entry.get())
-        boy = float(my_entry1.get())
+        boy = float(my_entry1.get())/100
         ortalama=float( kilo/ boy**2)
         if ortalama<18.5:
           print("Your BMI is Underweight")
-        elif 18.5<=ortalama>=24.9 :
+        elif 18.5<=ortalama<=24.9 :
           print("Your BMI is Normal")
-        elif 25<=ortalama>=29.9 :
+        elif 25<=ortalama<=29.9 :
           print("Your BMI is Over Weight")
-        elif 30<=ortalama>=34.9 :
+        elif 30<=ortalama<=34.9 :
           print("Your BMI is Obesity(Class 1)")
-        elif 35<=ortalama>=39.9:
+        elif 35<=ortalama<=39.9:
           print("Your BMI is Obesity (Class 2)")
         else:
           print("Your BMI is Extreme Obesity")
     except ValueError:
         result_label.config(text="Please enter valid numbers!")
-
+    except ZeroDivisionError:
+        result_label.config(text="Height must not be zero",fg="purple")
 
 my_button=Button(text="Calculate",fg="purple",width=15,command=hesapla)
 my_button.pack(pady=10)
